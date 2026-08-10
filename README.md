@@ -33,6 +33,16 @@ A single-page dashboard that turns the [Actuarial Risk Model API](https://github
 - 🎚️ **Sensitivity Analysis** — stress-test premium or VaR across a parameter sweep
 - 🕓 **Saved Runs** — name and revisit past calculations, backed by the API's run history
 
+## 🌍 Real-World Scenarios
+
+Five live demos over real public data, showing the toolkit applied to concrete products rather than abstract distributions:
+
+- 🌧️ **Weather-Index Insurance** — pick a county (Homa Bay, West Pokot, Turkana), set a rainfall strike/exit, and watch 33 years of real seasonal rainfall turn into a payout history, a simulated payout distribution, and a burn-cost premium
+- 🌾 **Area-Yield Crop Insurance** — Kenya's real national cereal yield series (1961-2023) against a fitted trend, with indemnity triggered by yield shortfall
+- 🌊 **Flood Catastrophe Bond** — GPD tail fit to real daily rainfall in the Tana River basin, priced into expected loss, attachment/exhaustion probabilities, and coupon spread
+- 🚗 **Motor Insurance (Kenya)** — per-vehicle-class premium quotes with a bonus-malus discount, plus fleet-level aggregate loss simulation
+- 🏥 **Health Microinsurance** — a claims triangle with Mack's stochastic IBNR reserve, plus catastrophic/stop-loss cover pricing
+
 ## 📸 Screenshots
 
 <div align="center">
@@ -52,6 +62,21 @@ A single-page dashboard that turns the [Actuarial Risk Model API](https://github
 **Risk Metrics**
 ![Risk Metrics](docs/screenshots/risk-metrics.png)
 
+**Weather-Index Insurance — real climate shocks turning into payouts**
+![Weather Index](docs/screenshots/weather-index.png)
+
+**Area-Yield Crop Insurance**
+![Area Yield](docs/screenshots/area-yield.png)
+
+**Flood Catastrophe Bond**
+![Cat Bond](docs/screenshots/cat-bond.png)
+
+**Motor Insurance (Kenya)**
+![Motor Insurance](docs/screenshots/motor.png)
+
+**Health Microinsurance**
+![Health Microinsurance](docs/screenshots/health-micro.png)
+
 </div>
 
 ## 🧰 Tech stack
@@ -59,7 +84,6 @@ A single-page dashboard that turns the [Actuarial Risk Model API](https://github
 - React 19, React Router 7, TypeScript
 - Vite 8, Tailwind CSS v4
 - Recharts for histograms and distribution charts
-- Axios for API calls
 - Oxlint
 
 ## ⚙️ Setup
@@ -101,7 +125,8 @@ src/
 ├── components/       # Layout, charts (Recharts), form/UI primitives, SaveRun
 ├── pages/             # One page per model: Premium, MonteCarlo, RiskMetrics,
 │                       # Reinsurance, Reserving, Credibility, Portfolio,
-│                       # ExtremeValue, Ruin, Sensitivity, RunHistory, Dashboard
+│                       # ExtremeValue, Ruin, Sensitivity, RunHistory, Dashboard,
+│                       # WeatherIndex, AreaYield, CatBond, Motor, HealthMicro
 ├── theme.ts           # Shared chart/theme tokens
 └── types.ts           # Request/response types mirroring the API's Pydantic schemas
 ```
