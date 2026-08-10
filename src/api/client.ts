@@ -1,15 +1,27 @@
 import type {
   AggregateLossRequest,
   AggregateLossResponse,
+  AreaYieldRequest,
+  AreaYieldResponse,
   BornhuetterFergusonResponse,
+  CatBondRequest,
+  CatBondResponse,
   ChainLadderResponse,
   CredibilityRequest,
   CredibilityResponse,
   ExtremeValueRequest,
   ExtremeValueResponse,
+  HealthCatCoverRequest,
+  HealthCatCoverResponse,
+  HealthTriangleRequest,
+  HealthTriangleResponse,
   MackChainLadderResponse,
   MonteCarloRequest,
   MonteCarloResponse,
+  MotorFleetSimulationRequest,
+  MotorFleetSimulationResponse,
+  MotorPremiumRequest,
+  MotorPremiumResponse,
   PortfolioRequest,
   PortfolioResponse,
   PremiumRequest,
@@ -25,6 +37,8 @@ import type {
   RunSummary,
   SensitivityResponse,
   Triangle,
+  WeatherIndexRequest,
+  WeatherIndexResponse,
   XolReinstatementRequest,
   XolReinstatementResponse,
 } from '../types'
@@ -114,6 +128,25 @@ export const api = {
   sensitivity: {
     premium: (req: unknown) => post<SensitivityResponse>('/sensitivity/premium', req),
     varSensitivity: (req: unknown) => post<SensitivityResponse>('/sensitivity/var', req),
+  },
+  weatherIndex: {
+    analyze: (req: WeatherIndexRequest) => post<WeatherIndexResponse>('/weather-index/analyze', req),
+  },
+  areaYield: {
+    analyze: (req: AreaYieldRequest) => post<AreaYieldResponse>('/area-yield/analyze', req),
+  },
+  catBond: {
+    price: (req: CatBondRequest) => post<CatBondResponse>('/cat-bond/price', req),
+  },
+  motor: {
+    premium: (req: MotorPremiumRequest) => post<MotorPremiumResponse>('/motor/premium', req),
+    fleetSimulation: (req: MotorFleetSimulationRequest) =>
+      post<MotorFleetSimulationResponse>('/motor/fleet-simulation', req),
+  },
+  healthMicro: {
+    triangle: (req: HealthTriangleRequest) => post<HealthTriangleResponse>('/health-micro/triangle', req),
+    catastrophicCover: (req: HealthCatCoverRequest) =>
+      post<HealthCatCoverResponse>('/health-micro/catastrophic-cover', req),
   },
   runs: {
     list: (kind?: string) => get<RunSummary[]>(kind ? `/runs?kind=${kind}` : '/runs'),

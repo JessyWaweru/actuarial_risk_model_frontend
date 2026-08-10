@@ -241,6 +241,158 @@ export interface SensitivityResponse {
   results: SensitivityPoint[]
 }
 
+export type County = 'homabay' | 'westpokot' | 'turkana'
+
+export interface WeatherIndexRequest {
+  county: County
+  trigger_months: number[]
+  strike_mm: number
+  exit_mm: number
+  sum_insured: number
+  risk_load: number
+  expense_load: number
+  simulations: number
+  seed?: number
+  confidence: number
+}
+
+export interface WeatherIndexResponse {
+  county: string
+  years: number[]
+  historical_index_mm: number[]
+  historical_payouts: number[]
+  fitted_mean_mm: number
+  fitted_std_mm: number
+  pure_premium: number
+  risk_load: number
+  gross_premium: number
+  loss_ratio: number
+  payout_probability: number
+  simulated_mean_payout: number
+  var: number
+  tvar: number
+  histogram: Histogram
+}
+
+export interface AreaYieldRequest {
+  coverage_level: number
+  price_per_kg: number
+  risk_load: number
+  expense_load: number
+  simulations: number
+  seed?: number
+  confidence: number
+}
+
+export interface AreaYieldResponse {
+  years: number[]
+  actual_yield: number[]
+  trend_yield: number[]
+  historical_indemnities: number[]
+  trend_slope: number
+  residual_std: number
+  pure_premium: number
+  risk_load: number
+  gross_premium: number
+  loss_ratio: number
+  var: number
+  tvar: number
+  histogram: Histogram
+}
+
+export interface CatBondRequest {
+  threshold_percentile: number
+  attachment_mm: number
+  exhaustion_mm: number
+  principal: number
+  risk_multiple: number
+  n_years: number
+  seed?: number
+}
+
+export interface CatBondResponse {
+  threshold_mm: number
+  shape: number
+  scale: number
+  exceedance_rate: number
+  n_exceedances: number
+  expected_loss_pct: number
+  expected_loss_amount: number
+  probability_of_attachment: number
+  probability_of_exhaustion: number
+  coupon_spread_pct: number
+  annual_coupon_amount: number
+  histogram: Histogram
+}
+
+export type VehicleClassName = 'private' | 'psv' | 'commercial' | 'motorcycle'
+
+export interface MotorPremiumRequest {
+  vehicle_class: VehicleClassName
+  risk_load: number
+  expense_load: number
+  claim_free_years: number
+}
+
+export interface MotorPremiumResponse {
+  vehicle_class: string
+  pure_premium: number
+  risk_load: number
+  gross_premium: number
+  discount_pct: number
+  adjusted_premium: number
+}
+
+export interface MotorFleetSimulationRequest {
+  vehicle_class: VehicleClassName
+  n_vehicles: number
+  n_years: number
+  seed?: number
+  confidence: number
+}
+
+export interface MotorFleetSimulationResponse {
+  mean_annual_claims: number
+  var: number
+  tvar: number
+  histogram: Histogram
+}
+
+export interface HealthTriangleRequest {
+  n_years: number
+  base_claims: number
+  growth: number
+  seed?: number
+}
+
+export interface HealthTriangleResponse {
+  triangle: (number | null)[][]
+  dev_factors: number[]
+  ultimate_by_year: number[]
+  reserve_by_year: number[]
+  standard_error_by_year: number[]
+  total_reserve: number
+  total_standard_error: number
+  coefficient_of_variation: number
+}
+
+export interface HealthCatCoverRequest {
+  mean_annual_claims: number
+  cv: number
+  n_years: number
+  deductible: number
+  limit: number
+  seed?: number
+}
+
+export interface HealthCatCoverResponse {
+  pure_premium: number
+  risk_load: number
+  gross_premium: number
+  loss_ratio: number
+  histogram: Histogram
+}
+
 export interface RunSummary {
   id: number
   kind: string
