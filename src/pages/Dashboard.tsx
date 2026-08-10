@@ -13,6 +13,11 @@ const TOOLS = [
   { to: '/extreme-value', title: 'Extreme Value / Tail Risk', desc: 'GPD tail fit, return levels, tail VaR/TVaR.' },
   { to: '/ruin', title: 'Ruin Probability', desc: 'Cramer-Lundberg adjustment coefficient and simulated ruin.' },
   { to: '/sensitivity', title: 'Sensitivity Analysis', desc: 'Stress-test premium or VaR across a parameter sweep.' },
+  { to: '/weather-index', title: 'Weather-Index Insurance', desc: 'Drought-triggered rainfall index cover over real Kenyan county rainfall data.' },
+  { to: '/area-yield', title: 'Area-Yield Crop Insurance', desc: 'Region-yield-triggered indemnity over Kenya\'s real cereal yield series.' },
+  { to: '/cat-bond', title: 'Flood Catastrophe Bond', desc: 'EVT-driven cat bond pricing over real Tana River basin rainfall extremes.' },
+  { to: '/motor', title: 'Motor Insurance (Kenya)', desc: 'Vehicle-class pricing with a bonus-malus no-claims discount.' },
+  { to: '/health-micro', title: 'Health Microinsurance', desc: 'IBNR reserving and catastrophic cover pricing for a microinsurance scheme.' },
   { to: '/runs', title: 'Saved Runs', desc: 'History of saved calculations for comparison.' },
 ]
 

@@ -1,9 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { AggregateLoss } from './pages/AggregateLoss'
+import { AreaYield } from './pages/AreaYield'
+import { CatBond } from './pages/CatBond'
 import { Credibility } from './pages/Credibility'
 import { Dashboard } from './pages/Dashboard'
 import { ExtremeValue } from './pages/ExtremeValue'
+import { HealthMicro } from './pages/HealthMicro'
+import { Motor } from './pages/Motor'
 import { MonteCarlo } from './pages/MonteCarlo'
 import { Portfolio } from './pages/Portfolio'
 import { Premium } from './pages/Premium'
@@ -13,6 +17,7 @@ import { RiskMetrics } from './pages/RiskMetrics'
 import { Ruin } from './pages/Ruin'
 import { RunHistory } from './pages/RunHistory'
 import { Sensitivity } from './pages/Sensitivity'
+import { WeatherIndex } from './pages/WeatherIndex'
 
 function App() {
   return (
@@ -31,6 +36,11 @@ function App() {
           <Route path="extreme-value" element={<ExtremeValue />} />
           <Route path="ruin" element={<Ruin />} />
           <Route path="sensitivity" element={<Sensitivity />} />
+          <Route path="weather-index" element={<WeatherIndex />} />
+          <Route path="area-yield" element={<AreaYield />} />
+          <Route path="cat-bond" element={<CatBond />} />
+          <Route path="motor" element={<Motor />} />
+          <Route path="health-micro" element={<HealthMicro />} />
           <Route path="runs" element={<RunHistory />} />
         </Route>
       </Routes>

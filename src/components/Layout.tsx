@@ -34,6 +34,16 @@ const NAV = [
       { to: '/reserving', label: 'Loss Reserving' },
     ],
   },
+  {
+    section: 'Real-World Scenarios',
+    items: [
+      { to: '/weather-index', label: 'Weather-Index Insurance' },
+      { to: '/area-yield', label: 'Area-Yield Crop Insurance' },
+      { to: '/cat-bond', label: 'Flood Catastrophe Bond' },
+      { to: '/motor', label: 'Motor Insurance (Kenya)' },
+      { to: '/health-micro', label: 'Health Microinsurance' },
+    ],
+  },
   { section: 'History', items: [{ to: '/runs', label: 'Saved Runs' }] },
 ]
 
