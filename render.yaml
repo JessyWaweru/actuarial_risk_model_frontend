@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: actuarial-risk-model-frontend
+    runtime: static
+    branch: main
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://actuarial-risk-model-api.onrender.com/api
+    routes:
+      # Client-side routing (react-router's BrowserRouter): let the app
+      # handle every path, so a direct load of e.g. /premium doesn't 404.
+      - type: rewrite
+        source: /*
+        destination: /index.html

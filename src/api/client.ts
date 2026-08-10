@@ -43,6 +43,12 @@ import type {
   XolReinstatementResponse,
 } from '../types'
 
+// In dev, Vite's server proxy forwards "/api" to the local backend (see
+// vite.config.ts) -- there's no such proxy on a deployed static site, so
+// production must set VITE_API_BASE_URL to the deployed backend's full
+// "/api" URL at build time.
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '/api'
+
 class ApiError extends Error {
   status: number
   detail: unknown
@@ -55,7 +61,7 @@ class ApiError extends Error {
 }
 
 async function post<TResponse>(path: string, body: unknown): Promise<TResponse> {
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -68,7 +74,7 @@ async function post<TResponse>(path: string, body: unknown): Promise<TResponse> 
 }
 
 async function get<TResponse>(path: string): Promise<TResponse> {
-  const res = await fetch(`/api${path}`)
+  const res = await fetch(`${API_BASE}${path}`)
   if (!res.ok) {
     const detail = await res.json().catch(() => res.statusText)
     throw new ApiError(res.status, detail.detail ?? detail)
@@ -77,7 +83,7 @@ async function get<TResponse>(path: string): Promise<TResponse> {
 }
 
 async function del(path: string): Promise<void> {
-  const res = await fetch(`/api${path}`, { method: 'DELETE' })
+  const res = await fetch(`${API_BASE}${path}`, { method: 'DELETE' })
   if (!res.ok) {
     const detail = await res.json().catch(() => res.statusText)
     throw new ApiError(res.status, detail.detail ?? detail)
